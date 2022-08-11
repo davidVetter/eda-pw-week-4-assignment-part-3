@@ -4,6 +4,7 @@ console.log('***** Cart Functions *****');
 let basket = []; // global array
 let testArray = [ 3, 4, 5, 6, 7 ]; // test array for empty function
 let testString = [ 'David', 'Wanda', 'Heinrich' ]; // test array for empty function
+const maxItems = 5; // global constant for stretch #1
 
 // Function that accepts string as argument, adds that string to basket array
 // and returns "true" after adding
@@ -65,4 +66,12 @@ function listItems( array ) {
  console.log('This should display empty ', empty([])); // passing empty array
  console.log(`Double checking that basket is actually empty, ${basket}, nothing should be between the commas`);
 
-
+ //function to check if basket is full
+function isFull ( array ) {
+    let arr = array;
+    if ( arr < maxItems ) {
+        return false;
+    } else {
+        return true;
+    }
+} // end function
