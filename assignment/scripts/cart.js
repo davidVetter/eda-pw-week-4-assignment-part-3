@@ -67,7 +67,7 @@ function listItems( array ) {
  } // end empty function
 
  // calls and logs to test function with variables changed first by other functions, unchanged arrays of strings and number
- console.log(`Showing contents of basket before the empty function: ${basket}`);
+ console.log(`Showing contents of basket before the empty function: ${basket.join(', ')}`);
  empty(basket);
  console.log('Basket is now ', basket);
  console.log('The array testArray is ', testArray);
@@ -89,3 +89,30 @@ function isFull ( array ) {
         return true;
     }
 } // end function
+
+// Function to remove an item from array
+function removeItem( item, array ) {
+    let rmItem = item; // create variable for first argument
+    let arr = array; // create variable for second argument
+    if ( arr.indexOf( rmItem ) < 0 ) { // check if requested item exists
+        console.log( "Your item couldn't be found, it was not removed" ); // log message if item not found
+        return null;
+    } else {
+        arr.splice( arr.indexOf( rmItem ), 1 ); // remove item at index of first argument
+        return rmItem;
+    } // end if else 
+} // end removeItem function
+
+// adding items to basket for testing and trying to remove an item that doesn't exist
+console.log( 'Adding apples (should show true) ', addItem( 'apples', basket ));
+console.log( 'Adding bananas (should show true) ', addItem( 'bananas', basket ));
+console.log( 'Adding peaches (should show true) ', addItem( 'peaches', basket ));
+console.log( `Basket is now ${basket.join(', ')}` );
+console.log('Trying to remove apples from basket (should return apples)', removeItem( 'apples', basket ));
+console.log(`Basket now contains ${basket}`);
+console.log('Trying to remove apples from basket (should return null)', removeItem( 'apples', basket ));
+console.log(`Basket is now contains ${basket}`);
+
+window.onload = function writeIndex() {
+document.getElementById("test").innerHTML = `Basket is now ${basket.join(', ')}`;
+}
