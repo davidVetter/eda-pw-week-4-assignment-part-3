@@ -6,18 +6,32 @@ let testArray = [ 3, 4, 5, 6, 7 ]; // test array for empty function
 let testString = [ 'David', 'Wanda', 'Heinrich' ]; // test array for empty function
 const maxItems = 5; // global constant for stretch #1
 
-// Function that accepts string as argument, adds that string to basket array
-// and returns "true" after adding
-function addItem( item ) {
-    let newItem = item; // create variable for argument
-    basket.push( newItem ); // add new item to the array Basket
-    return true; // return true after item is added
+// Function that accepts string as argument 1 and an array as argument 2, adds that string to the array if the max amount
+// allowed in the array is not reached. Returns false and does not add value if at max or greater or returns "true" after adding the value
+function addItem( item, array ) {
+    let newItem = item; // create variable for 1st argument
+    let arr = array; // create variable for 2nd argument
+    if (arr.length >= maxItems) { // checks if array is less than the max allowed
+        console.log('The list is already full! Your item was not added.'); // message if item wasn't added
+        return false;
+    } else {
+        arr.push(newItem); // add new item to the array Basket
+        return true; // return true after item is added
+    } // end if/else
 } // end addItem function
 
 console.log( `Basket is ${basket}` ); // console logs to show working function
-console.log( 'Adding apples (should show true) ', addItem( 'apples' ));
+console.log( 'Adding apples (should show true) ', addItem( 'apples', basket ));
 console.log( `Basket is now ${basket}` );
-console.log( 'Adding bananas (should show true) ', addItem( 'bananas' ));
+console.log( 'Adding bananas (should show true) ', addItem( 'bananas', basket ));
+console.log( `Basket is now ${basket.join(', ')}` );
+console.log( 'Adding peaches (should show true) ', addItem( 'peaches', basket ));
+console.log( `Basket is now ${basket.join(', ')}` );
+console.log( 'Adding pinneapple (should show true) ', addItem( 'pineapple', basket ));
+console.log( `Basket is now ${basket.join(', ')}` );
+console.log( 'Adding grapes (should show true) ', addItem( 'grapes', basket ));
+console.log( `Basket is now ${basket.join(', ')}` );
+console.log( 'Adding strawberry (should show false) ', addItem( 'strawberry', basket ));
 console.log( `Basket is now ${basket.join(', ')}` );
 
 // Function that reads the array basket and prints each item on a new console line, numbers items and gives message if nothing to list
