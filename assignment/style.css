@@ -7,3 +7,7 @@ button {
     background-color: #615756;
     color: #52ffb8;
 }
+
+#done {
+    visibility: hidden;
+}

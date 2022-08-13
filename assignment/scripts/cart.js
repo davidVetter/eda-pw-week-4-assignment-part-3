@@ -5,6 +5,10 @@ let basket = []; // global array
 let testArray = [ 3, 4, 5, 6, 7 ]; // test array for empty function
 let testString = [ 'David', 'Wanda', 'Heinrich' ]; // test array for empty function
 const maxItems = 5; // global constant for stretch #1
+let addCheck = false;
+let listCheck = false;
+let emptyCheck = false;
+let rmCheck = false;
 
 // Function that accepts string as argument 1 and an array as argument 2, adds that string to the array if the max amount
 // allowed in the array is not reached. Returns false and does not add value if at max or greater or returns "true" after adding the value
@@ -21,19 +25,21 @@ function addItem( item, array ) {
 } // end addItem function
 
 function testAdd() {
-console.log( `Basket is ${basket}` ); // console logs to show working function
-console.log( 'Adding apples (should show true) ', addItem( 'apples', basket ));
-console.log( `Basket is now ${basket}` );
-console.log( 'Adding bananas (should show true) ', addItem( 'bananas', basket ));
-console.log( `Basket is now ${basket.join(', ')}` );
-console.log( 'Adding peaches (should show true) ', addItem( 'peaches', basket ));
-console.log( `Basket is now ${basket.join(', ')}` );
-console.log( 'Adding pinneapple (should show true) ', addItem( 'pineapple', basket ));
-console.log( `Basket is now ${basket.join(', ')}` );
-console.log( 'Adding grapes (should show true) ', addItem( 'grapes', basket ));
-console.log( `Basket is now ${basket.join(', ')}` );
-console.log( 'Adding strawberry (should show false) ', addItem( 'strawberry', basket ));
-console.log( `Basket is now ${basket.join(', ')}` );
+    console.log(`Basket is ${basket}`); // console logs to show working function
+    console.log('Adding apples (should show true) ', addItem('apples', basket));
+    console.log(`Basket is now ${basket}`);
+    console.log('Adding bananas (should show true) ', addItem('bananas', basket));
+    console.log(`Basket is now ${basket.join(', ')}`);
+    console.log('Adding peaches (should show true) ', addItem('peaches', basket));
+    console.log(`Basket is now ${basket.join(', ')}`);
+    console.log('Adding pinneapple (should show true) ', addItem('pineapple', basket));
+    console.log(`Basket is now ${basket.join(', ')}`);
+    console.log('Adding grapes (should show true) ', addItem('grapes', basket));
+    console.log(`Basket is now ${basket.join(', ')}`);
+    console.log('Adding strawberry (should show false) ', addItem('strawberry', basket));
+    console.log(`Basket is now ${basket.join(', ')}`);
+    addCheck = true;
+    allClick();
 }
 
 // Function that reads the array basket and prints each item on a new console line, numbers items and gives message if nothing to list
@@ -50,41 +56,45 @@ function listItems( array ) {
     return; // end function
  } // end listItems function
 
- function testList() {
- // Calls to function to test - one from global array by name, hard coded array passed as argument, array of numbers and an empty array
- listItems( basket );
- listItems( ['Dog', 'Cat', 'Fish', 'Rabbit'] );
- listItems( [ 3, 5, 7, 8, 9 ]);
- listItems( [] );
- }
+function testList() {
+    // Calls to function to test - one from global array by name, hard coded array passed as argument, array of numbers and an empty array
+    listItems(basket);
+    listItems(['Dog', 'Cat', 'Fish', 'Rabbit']);
+    listItems([3, 5, 7, 8, 9]);
+    listItems([]);
+    listCheck = true;
+    allClick();
+}
 
- // Function that clears an array
- function empty( array ) {
-     if (array.length < 1) { // checks if array is already empty, if it is gives message and exits function
-         console.log("It's tough to clear what is already empty! Please try again...");
-         return array;
-     } else { // If array is not empty then we empty it, logging a message first of what we cleared
-         console.log(`I'm about to clear the array of ${array.join(', ')}`);
-         array.length = 0; // clearing array by setting it's length to 0
-         return array; // return the emptied array
+// Function that clears an array
+function empty(array) {
+    if (array.length < 1) { // checks if array is already empty, if it is gives message and exits function
+        console.log("It's tough to clear what is already empty! Please try again...");
+        return array;
+    } else { // If array is not empty then we empty it, logging a message first of what we cleared
+        console.log(`I'm about to clear the array of ${array.join(', ')}`);
+        array.length = 0; // clearing array by setting it's length to 0
+        return array; // return the emptied array
     } // end if/else
- } // end empty function
+} // end empty function
 
- function testEmpty() {
- // calls and logs to test function with variables changed first by other functions, unchanged arrays of strings and number
- console.log(`Showing contents of basket before the empty function: ${basket.join(', ')}`);
- empty(basket);
- console.log('Basket is now ', basket);
- console.log('The array testArray is ', testArray);
- empty(testArray);
- console.log('testArray is now ', testArray);
- console.log('The array testString is ', testString);
- empty(testString);
- console.log('testString is now ', testString);
- console.log('This should display empty ', empty([ 3, 4, 5, 6] )); // emptied hard coded array
- console.log('This should display empty ', empty([])); // passing empty array
- console.log(`Double checking that basket is actually empty, ${basket}, nothing should be between the commas`);
- } // end testEmpty function
+function testEmpty() {
+    // calls and logs to test function with variables changed first by other functions, unchanged arrays of strings and number
+    console.log(`Showing contents of basket before the empty function: ${basket.join(', ')}`);
+    empty(basket);
+    console.log('Basket is now ', basket);
+    console.log('The array testArray is ', testArray);
+    empty(testArray);
+    console.log('testArray is now ', testArray);
+    console.log('The array testString is ', testString);
+    empty(testString);
+    console.log('testString is now ', testString);
+    console.log('This should display empty ', empty([3, 4, 5, 6])); // emptied hard coded array
+    console.log('This should display empty ', empty([])); // passing empty array
+    console.log(`Double checking that basket is actually empty, ${basket}, nothing should be between the commas`);
+    emptyCheck = true;
+    allClick();
+} // end testEmpty function
 
  // Function to check if basket is full, accepts array as argument
  // **Tests in addItem function**
@@ -111,15 +121,17 @@ function removeItem( item, array ) {
 } // end removeItem function
 
 function testRemove() {
-// Adding items to basket for testing and trying to remove an item that doesn't exist
-console.log( 'Adding apples (should show true) ', addItem( 'apples', basket ));
-console.log( 'Adding bananas (should show true) ', addItem( 'bananas', basket ));
-console.log( 'Adding peaches (should show true) ', addItem( 'peaches', basket ));
-console.log( `Basket is now ${basket.join(', ')}` );
-console.log('Trying to remove apples from basket (should return apples)', removeItem( 'apples', basket ));
-console.log(`Basket now contains ${basket.join(', ')}`);
-console.log('Trying to remove apples from basket (should return null)', removeItem( 'apples', basket ));
-console.log(`Basket now contains ${basket.join(', ')}`);
+    // Adding items to basket for testing and trying to remove an item that doesn't exist
+    console.log('Adding apples (should show true) ', addItem('apples', basket));
+    console.log('Adding bananas (should show true) ', addItem('bananas', basket));
+    console.log('Adding peaches (should show true) ', addItem('peaches', basket));
+    console.log(`Basket is now ${basket.join(', ')}`);
+    console.log('Trying to remove apples from basket (should return apples)', removeItem('apples', basket));
+    console.log(`Basket now contains ${basket.join(', ')}`);
+    console.log('Trying to remove apples from basket (should return null)', removeItem('apples', basket));
+    console.log(`Basket now contains ${basket.join(', ')}`);
+    rmCheck = true;
+    allClick();
 }
 
 function questBtn () {
@@ -133,5 +145,15 @@ function questBtn () {
         document.getElementById('questionBtn').innerText = 'Questions?';
         document.getElementById('questionBtn').style.backgroundColor = '#615756';
         document.getElementById('questionBtn').style.color = '#52ffb8';
+    }
+}
+
+function allClick() {
+    if ( addCheck && listCheck && emptyCheck && rmCheck ) {
+        document.getElementById('done').style.visibility = 'visible';
+        let hideItem = document.getElementsByClassName('hide');
+        for (let button of hideItem) {
+            button.style.display = 'none';
+        }
     }
 }
