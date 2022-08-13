@@ -8,11 +8,25 @@
   </head>
   <body>
     <h1>Week 4 Assignment - Part 3</h1>
-    <p>See console for output.</p>
+    <p>See console for output. Output is best when functions are run in order, but will work in any order!</p>
     <!-- Create an unordered list with any questions you have -->
     <ol id="list" style="display: none;">
-      <li>Question #1</li>
-      <li>Question #2</li>
+      <li>On my empty function, I first tried to use array = []; instead of array.length = 0; to clear my array. The array wasn't clearing though.
+        I wasn't using the if/else or console logs at the time but after switching to array.length it worked as I wanted. Most of the research
+        I found on clearing arrays suggested arrayName = []; as a way to clear it. Should that have worked or was I missing something?<br />
+        <pre>
+          <code>
+            function empty(array) {
+              array = [];
+              return array;
+            }
+            function empty(array) {
+              array.length = 0;
+              return array;
+            }
+          </code>
+        </pre>
+      </li>
     </ol>
     <button id="questionBtn" onclick="questBtn()">Questions?</button>
     <h2 class="hide">Run the add items function?</h2>
@@ -24,6 +38,6 @@
     <h2 class="hide">Run the remove item function?</h2>
     <button id="removeBtn" class="hide" onclick="testRemove()">Remove</button>
     <p id="done">ALL FUNCTIONS HAVE BEEN RUN!</p>
-    <button id="reset" onclick="resetPage()">Reset</button>
+    <button id="reset" onclick="resetPage()">Reset?</button>
   </body>
 </html>

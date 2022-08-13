@@ -41,6 +41,8 @@ function testAdd() {
     console.log(`Basket is now ${basket.join(', ')}`);
     addCheck = true; // sets click check to true
     allClick(); // calls allClick function
+    document.getElementById('addBtn').style.backgroundColor = '#52ffb8';
+    document.getElementById('addBtn').style.color = '#615756';
 } // end testAdd function
 
 // Function that reads the array basket and prints each item on a new console line, numbers items and gives message if nothing to list
@@ -65,6 +67,8 @@ function testList() {
     listItems([]);
     listCheck = true; // sets click check to true
     allClick(); // calls allClick function
+    document.getElementById('listBtn').style.backgroundColor = '#52ffb8';
+    document.getElementById('listBtn').style.color = '#615756';
 } // end testList function
 
 // Function that clears an array
@@ -95,6 +99,8 @@ function testEmpty() {
     console.log(`Double checking that basket is actually empty, ${basket}, nothing should be between the commas`);
     emptyCheck = true; // set click check to true
     allClick(); // call allClick function
+    document.getElementById('emptyBtn').style.backgroundColor = '#52ffb8';
+    document.getElementById('emptyBtn').style.color = '#615756';
 } // end testEmpty function
 
  // Function to check if basket is full, accepts array as argument
@@ -133,6 +139,8 @@ function testRemove() {
     console.log(`Basket now contains ${basket.join(', ')}`);
     rmCheck = true; // set click check to true
     allClick(); // call allClick function
+    document.getElementById('removeBtn').style.backgroundColor = '#52ffb8';
+    document.getElementById('removeBtn').style.color = '#615756';
 } // end testRemove function
 
 function questBtn () {
@@ -169,8 +177,12 @@ function resetPage() {
     listCheck = false; //  "       "
     emptyCheck = false; // "       "
     rmCheck = false; //    "       "
+    testArray = [ 3, 4, 5, 6, 7 ]; // test array for empty function
+    testString = [ 'David', 'Wanda', 'Heinrich' ]; // test array for empty function
     let hideItem = document.getElementsByClassName('hide'); // creates array of all elements in the 'hide' class
     for (let button of hideItem) { // for loop that goes through each element in the 'hide' class
         button.style.display = 'block'; // sets the display property on each element to 'block'
+        button.style.backgroundColor = '#615756';
+        button.style.color = '#52ffb8';
     } // end for loop
 } // end resetPage function
