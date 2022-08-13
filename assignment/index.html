@@ -3,16 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>Week 4 Assignment</title>
+    <link rel="stylesheet" href="style.css">
     <script src="scripts/cart.js"></script>
   </head>
-  <body style="background-color: #615756; color: #52ffb8;">
+  <body>
     <h1>Week 4 Assignment - Part 3</h1>
     <p>See console for output.</p>
     <!-- Create an unordered list with any questions you have -->
-    <ol>
+    <ol id="list" style="display: none;">
       <li>Question #1</li>
       <li>Question #2</li>
     </ol>
-    <p id="test"></p>
+    <button id="questionBtn" onclick="questBtn()">Questions?</button>
+    <h2>Run the add items function?</h2>
+    <button id="addBtn" onclick="testAdd()">Add</button>
+    <h2>Run the list items function?</h2>
+    <button id="listBtn" onclick="testList()">List</button>
+    <h2>Run the empty function?</h2>
+    <button id="emptyBtn" onclick="testEmpty()">Empty</button>
+    <h2>Run the remove item function?</h2>
+    <button id="removeBtn" onclick="testRemove()">Remove</button>
   </body>
 </html>
