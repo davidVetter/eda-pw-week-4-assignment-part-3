@@ -5,10 +5,10 @@ let basket = []; // global array
 let testArray = [ 3, 4, 5, 6, 7 ]; // test array for empty function
 let testString = [ 'David', 'Wanda', 'Heinrich' ]; // test array for empty function
 const maxItems = 5; // global constant for stretch #1
-let addCheck = false;
-let listCheck = false;
-let emptyCheck = false;
-let rmCheck = false;
+let addCheck = false; // toggle if function has been run
+let listCheck = false; // "                            "
+let emptyCheck = false; // "                            "
+let rmCheck = false; // "                            "
 
 // Function that accepts string as argument 1 and an array as argument 2, adds that string to the array if the max amount
 // allowed in the array is not reached. Returns false and does not add value if at max or greater or returns "true" after adding the value
@@ -24,8 +24,9 @@ function addItem( item, array ) {
     } // end if/else
 } // end addItem function
 
-function testAdd() {
-    console.log(`Basket is ${basket}`); // console logs to show working function
+// console logs to show working function
+function testAdd() { 
+    console.log(`Basket is ${basket}`); 
     console.log('Adding apples (should show true) ', addItem('apples', basket));
     console.log(`Basket is now ${basket}`);
     console.log('Adding bananas (should show true) ', addItem('bananas', basket));
@@ -38,9 +39,9 @@ function testAdd() {
     console.log(`Basket is now ${basket.join(', ')}`);
     console.log('Adding strawberry (should show false) ', addItem('strawberry', basket));
     console.log(`Basket is now ${basket.join(', ')}`);
-    addCheck = true;
-    allClick();
-}
+    addCheck = true; // sets click check to true
+    allClick(); // calls allClick function
+} // end testAdd function
 
 // Function that reads the array basket and prints each item on a new console line, numbers items and gives message if nothing to list
 function listItems( array ) { 
@@ -62,9 +63,9 @@ function testList() {
     listItems(['Dog', 'Cat', 'Fish', 'Rabbit']);
     listItems([3, 5, 7, 8, 9]);
     listItems([]);
-    listCheck = true;
-    allClick();
-}
+    listCheck = true; // sets click check to true
+    allClick(); // calls allClick function
+} // end testList function
 
 // Function that clears an array
 function empty(array) {
@@ -92,8 +93,8 @@ function testEmpty() {
     console.log('This should display empty ', empty([3, 4, 5, 6])); // emptied hard coded array
     console.log('This should display empty ', empty([])); // passing empty array
     console.log(`Double checking that basket is actually empty, ${basket}, nothing should be between the commas`);
-    emptyCheck = true;
-    allClick();
+    emptyCheck = true; // set click check to true
+    allClick(); // call allClick function
 } // end testEmpty function
 
  // Function to check if basket is full, accepts array as argument
@@ -130,9 +131,9 @@ function testRemove() {
     console.log(`Basket now contains ${basket.join(', ')}`);
     console.log('Trying to remove apples from basket (should return null)', removeItem('apples', basket));
     console.log(`Basket now contains ${basket.join(', ')}`);
-    rmCheck = true;
-    allClick();
-}
+    rmCheck = true; // set click check to true
+    allClick(); // call allClick function
+} // end testRemove function
 
 function questBtn () {
     if ( document.getElementById('list').style.display === 'none' ) {
@@ -146,14 +147,30 @@ function questBtn () {
         document.getElementById('questionBtn').style.backgroundColor = '#615756';
         document.getElementById('questionBtn').style.color = '#52ffb8';
     }
-}
+} // end questBtn function
 
+// Checks if all function buttons have been clicked, once all clicked they hide and a message appears
 function allClick() {
-    if ( addCheck && listCheck && emptyCheck && rmCheck ) {
-        document.getElementById('done').style.visibility = 'visible';
-        let hideItem = document.getElementsByClassName('hide');
-        for (let button of hideItem) {
-            button.style.display = 'none';
-        }
-    }
-}
+    if ( addCheck && listCheck && emptyCheck && rmCheck ) { // ALL 4 buttons must have been used
+        document.getElementById('done').style.visibility = 'visible'; // makes message visible
+        document.getElementById('reset').style.display = 'block';
+        let hideItem = document.getElementsByClassName('hide'); // creates array of all elements in the 'hide' class
+        for (let button of hideItem) { // for loop that goes through each element in the 'hide' class
+            button.style.display = 'none'; // sets the display property on each element to 'none'
+        } // end for loop
+    } // end if statement
+} // end allClick function
+
+function resetPage() {
+    console.clear();
+    document.getElementById('done').style.visibility = 'hidden'; // hides message again
+    document.getElementById('reset').style.display = 'none'; // hides button again
+    addCheck = false; // reset toggle
+    listCheck = false; //  "       "
+    emptyCheck = false; // "       "
+    rmCheck = false; //    "       "
+    let hideItem = document.getElementsByClassName('hide'); // creates array of all elements in the 'hide' class
+    for (let button of hideItem) { // for loop that goes through each element in the 'hide' class
+        button.style.display = 'block'; // sets the display property on each element to 'block'
+    } // end for loop
+} // end resetPage function

@@ -11,3 +11,7 @@ button {
 #done {
     visibility: hidden;
 }
+
+#reset {
+    display: none;
+}
