@@ -3,6 +3,7 @@ body {
     color: #52ffb8;
     overflow: auto;
     word-wrap: break-word;
+    min-width: 500px;
 }
 
 button {
